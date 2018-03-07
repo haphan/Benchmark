@@ -37,7 +37,7 @@ To improve consistency, we recommend that you stop any services you may be runni
 WARNING: You run this script entirely at your own risk.
 ServerBear accepts no responsibility for any damage this script may cause.
 
-Please review the code at https://github.com/Crowd9/Benchmark if you have any concerns"
+Please review the code at https://github.com/haphan/Benchmark if you have any concerns"
 
 echo "Checking for required dependencies"
 
@@ -108,9 +108,9 @@ function require_download() {
   fi
 }
 
-require_download FIO fio-$FIO_DIR https://github.com/Crowd9/Benchmark/raw/master/fio-$FIO_VERSION.tar.gz
-require_download IOPing $IOPING_DIR https://github.com/Crowd9/Benchmark/raw/master/ioping-$IOPING_VERSION.tar.gz
-require_download UnixBench $UNIX_BENCH_DIR https://github.com/Crowd9/Benchmark/raw/master/UnixBench$UNIX_BENCH_VERSION-patched.tgz
+require_download FIO fio-$FIO_DIR https://github.com/haphan/Benchmark/raw/master/fio-$FIO_VERSION.tar.gz
+require_download IOPing $IOPING_DIR https://github.com/haphan/Benchmark/raw/master/ioping-$IOPING_VERSION.tar.gz
+require_download UnixBench $UNIX_BENCH_DIR https://github.com/haphan/Benchmark/raw/master/UnixBench$UNIX_BENCH_VERSION-patched.tgz
 mv -f UnixBench $UNIX_BENCH_DIR 2>/dev/null
 
 cat > $FIO_DIR/reads.ini << EOF
@@ -251,12 +251,12 @@ echo "Running UnixBench benchmark..."
 cd $UNIX_BENCH_DIR
 ./Run -c 1 -c `grep -c processor /proc/cpuinfo` >> ../sb-output.log 2>&1
 cd ..
+cat sb-output.log
+#RESPONSE=\`curl -s -F "upload[upload_type]=unix-bench-output" -F "upload[data]=<sb-output.log" -F "upload[key]=$EMAIL|$HOST|$PLAN|$COST" -F "private=$PRIVATE" $UPLOAD_ENDPOINT\`
 
-RESPONSE=\`curl -s -F "upload[upload_type]=unix-bench-output" -F "upload[data]=<sb-output.log" -F "upload[key]=$EMAIL|$HOST|$PLAN|$COST" -F "private=$PRIVATE" $UPLOAD_ENDPOINT\`
-
-echo "Uploading results..."
-echo "Response: \$RESPONSE"
-echo "Completed! Your benchmark has been queued & will be delivered in a jiffy."
+#echo "Uploading results..."
+#echo "Response: \$RESPONSE"
+#echo "Completed! Your benchmark has been queued & will be delivered in a jiffy."
 kill -15 \`ps -p \$\$ -o ppid=\` &> /dev/null
 rm -rf ../sb-bench
 rm -rf ~/.sb-pid
