@@ -232,7 +232,7 @@ download_benchmark 'Linode, Tokyo, JP' 'http://speedtest.tokyo.linode.com/100MB-
 download_benchmark 'Linode, London, UK' 'http://speedtest.london.linode.com/100MB-london.bin'
 download_benchmark 'OVH, Paris, France' 'http://proof.ovh.net/files/100Mio.dat'
 download_benchmark 'SmartDC, Rotterdam, Netherlands' 'http://mirror.i3d.net/100mb.bin'
-download_benchmark 'Hetzner, Nuernberg, Germany' 'http://hetzner.de/100MB.iso'
+download_benchmark 'Hetzner, Nuernberg, Germany' 'https://speed.hetzner.de/100MB.bin'
 download_benchmark 'iiNet, Perth, WA, Australia' 'http://ftp.iinet.net.au/test100MB.dat'
 download_benchmark 'Leaseweb, Haarlem, NL' 'http://mirror.nl.leaseweb.net/speedtest/100mb.bin'
 download_benchmark 'Leaseweb, Manassas, VA, USA' 'http://mirror.us.leaseweb.net/speedtest/100mb.bin'
